@@ -12,6 +12,11 @@ import com.recogidapaquete.base.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+*   EC.Software
+*   Daniel Martinez
+*/
+
 public class ConexionMySQL {
     
     private static ConexionMySQL conexionSingleton;

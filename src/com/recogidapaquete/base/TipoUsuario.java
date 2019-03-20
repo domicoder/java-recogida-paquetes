@@ -7,7 +7,7 @@ package com.recogidapaquete.base;
  */
 
 public abstract class TipoUsuario {
-    
+    //Creanto variable de tipo Mediador
     protected Mediador mediador;
     
     public TipoUsuario(Mediador mediador){

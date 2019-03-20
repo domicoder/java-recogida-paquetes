@@ -59,7 +59,7 @@ public class Paquete {
     public void setEstado(Estados estado) {
         this.estado = estado;
     }
-
+    //Metodo que ejecuta la accion de cambio de estados en los paquetes del sistema
     public void ejecutarAccion(){
         estado.ejecutarAccion();
     }

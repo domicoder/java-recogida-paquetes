@@ -5,7 +5,7 @@ public class Administrador extends TipoUsuario {
     
     private String usuario;
     private String contrasena;
-    
+    //Constructor recibe mediator (Design Pattern) y se iguala a la clase Padre desde donde extiende TipoUsuario
     public Administrador(Mediador mediador) {
         super(mediador);
     }
@@ -27,7 +27,7 @@ public class Administrador extends TipoUsuario {
     public String getContrasena() {
         return contrasena;
     }
-    
+    //Using Observer Mediator para indicar que tipo de usuario es el que inicia sesion
     @Override
     public void sendTipo(String usuario, String password) {
        

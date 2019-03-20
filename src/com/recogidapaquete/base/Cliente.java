@@ -11,7 +11,7 @@ public class Cliente extends TipoUsuario {
     private String contrasena;
     private String correo;
     private String idCliente;
-    
+    //Recibe un tipo de dato mediador para verificar que tipo de usuario es y sus datos, en este caso -cliente-
     public Cliente(Mediador mediador){
         super(mediador);
     }
@@ -81,7 +81,7 @@ public class Cliente extends TipoUsuario {
     public String getIdCliente() {
         return idCliente;
     }
-    
+    //Envia el tipo de usuario que es y sus datos, en este caso -cliente-
     @Override
     public void sendTipo(String usuario, String password) {
         

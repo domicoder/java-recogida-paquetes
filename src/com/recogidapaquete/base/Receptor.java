@@ -5,7 +5,7 @@ public class Receptor extends TipoUsuario {
 
     private String usuario;
     private String contrasena;
-    
+    //Recibe un tipo de dato mediador para verificar que tipo de usuario es y sus datos, en este caso -receptor-
     public Receptor(Mediador mediador) {
         super(mediador);
     }
@@ -27,7 +27,7 @@ public class Receptor extends TipoUsuario {
     public String getContrasena() {
         return contrasena;
     }
-    
+    //Envia el tipo de usuario que es y sus datos, en este caso -receptor-
     @Override
     public void sendTipo(String usuario, String password) {
        

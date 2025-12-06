@@ -1,14 +1,17 @@
-﻿
 package com.recogidapaquete.base;
 
 import com.recogidapaquete.BD.ConexionMySQL;
-import com.recogidapaquete.interfaces.*;
+import com.recogidapaquete.base.Mediador;
+import com.recogidapaquete.interfaces.AdministradorGrafica;
+import com.recogidapaquete.interfaces.ClienteGrafica;
+import com.recogidapaquete.interfaces.ReceptorGrafica;
 import javax.swing.JOptionPane;
+
 /*Clase MediadorConcreto: clase mediadora entre el inicio de sesion y 
 **la pantalla inicio del programa.
 **Dependiendo del tipo usuario tiene una funcion determinada.
 */
-public class MediadorConcreto implements Mediador{
+public class MediadorConcreto implements Mediador {
     
     private Cliente cliente;
     private Receptor receptor;

@@ -5,6 +5,7 @@
  */
 package com.recogidapaquete.interfaces;
 
+import com.recogidapaquete.base.MediadorConcreto;
 import com.recogidapaquete.BD.ConexionMySQL;
 import java.awt.Color;
 import java.util.regex.Matcher;

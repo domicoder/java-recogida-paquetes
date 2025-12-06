@@ -1,6 +1,7 @@
 
 package com.recogidapaquete.BD;
 
+import com.recogidapaquete.base.MediadorConcreto;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,11 +12,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 import com.recogidapaquete.base.*;
 import java.util.ArrayList;
 import java.util.Calendar;
-
-/**
-*   EC.Software
-*   Daniel Martinez
-*/
 
 public class ConexionMySQL {
     

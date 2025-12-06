@@ -2,6 +2,7 @@
 package com.recogidapaquete.BD;
 
 import com.recogidapaquete.base.MediadorConcreto;
+import com.recogidapaquete.config.ConfigManager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,9 +21,12 @@ public class ConexionMySQL {
     private Statement st;
     private PreparedStatement ps;
     private ResultSet resultado;
-    private static final String url="jdbc:mysql://localhost:3306/recogidapaquetes";
-    private static final String password="root";
-    private static final String user="root";
+    
+    // Load credentials from external configuration
+    private static final ConfigManager config = ConfigManager.getInstance();
+    private static final String url = config.getDbUrl();
+    private static final String user = config.getDbUser();
+    private static final String password = config.getDbPassword();
     private static int cantClientesRecogidaDia = 0;
     private static double porcentajePaqRecogidos = 0.0;
     private static double porcentajePaqNoRecogidos = 0.0;

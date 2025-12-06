@@ -1,2 +1,8 @@
 REPORTES
 /build/
+
+# Sensitive configuration files - DO NOT COMMIT
+config.properties
+src/config.properties
+**/config.properties
+!config.properties.template

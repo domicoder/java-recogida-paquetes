@@ -1,0 +1,30 @@
+# =============================================================================
+# RePAQ Application Configuration Template
+# =============================================================================
+# Copy this file to 'config.properties' and fill in your actual values.
+# IMPORTANT: Never commit config.properties to version control!
+# should be created in "src/config.properties"
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Database Configuration
+# -----------------------------------------------------------------------------
+db.url=jdbc:mysql://localhost:3306/recogidapaquetes
+db.user=YOUR_DATABASE_USER
+db.password=YOUR_DATABASE_PASSWORD
+
+# -----------------------------------------------------------------------------
+# Email/SMTP Configuration (Gmail example)
+# -----------------------------------------------------------------------------
+# For Gmail, you need to:
+# 1. Enable 2-Factor Authentication on your Google account
+# 2. Generate an App Password at: https://myaccount.google.com/apppasswords
+# 3. Use the App Password below (not your regular Gmail password)
+# -----------------------------------------------------------------------------
+smtp.host=smtp.gmail.com
+smtp.port=587
+smtp.starttls.enable=true
+smtp.auth=true
+smtp.user=YOUR_EMAIL@gmail.com
+smtp.password=YOUR_APP_PASSWORD
+

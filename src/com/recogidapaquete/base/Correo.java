@@ -1,6 +1,7 @@
 
 package com.recogidapaquete.base;
 
+import com.recogidapaquete.config.ConfigManager;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -14,6 +15,9 @@ public class Correo implements Observer{
     
     private String email;
     private String estado;
+    
+    // Load SMTP credentials from external configuration
+    private static final ConfigManager config = ConfigManager.getInstance();
 
     public Correo() {
     }
@@ -40,27 +44,33 @@ public class Correo implements Observer{
     @Override
     public void update() {
         try {
+            // Get SMTP configuration from external config file
+            String smtpUser = config.getSmtpUser();
+            String smtpPassword = config.getSmtpPassword();
+            
             Properties p = new Properties();
-            p.put("mail.smtp.host", "smtp.gmail.com");
-            p.setProperty("mail.smtp.starttls.enable", "true");
-            p.setProperty("mail.smtp.port", "587");
-            p.setProperty("mail.smtp.user", "repaq01@gmail.com"); // aqui el usuarrio con el que se envia el correo
-            p.setProperty("mail.smtp.auth", "true");
+            p.put("mail.smtp.host", config.getSmtpHost());
+            p.setProperty("mail.smtp.starttls.enable", config.getSmtpStartTls());
+            p.setProperty("mail.smtp.port", config.getSmtpPort());
+            p.setProperty("mail.smtp.user", smtpUser);
+            p.setProperty("mail.smtp.auth", config.getSmtpAuth());
+            
             Session s = Session.getDefaultInstance(p);
             MimeMessage message = new MimeMessage(s);
-            message.setFrom(new InternetAddress("repaq01@gmail.com")); //correo con el con el cual quieres enviar el correo
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));   //Se podrían añadir varios de la misma manera ya que este seria el destino
-            message.setSubject("📦 Tienes un Paquete Disponible para Entrega en RePAQ");  // para el asunto del mensaje 
+            message.setFrom(new InternetAddress(smtpUser)); // correo con el cual se envía
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email)); // destino
+            message.setSubject("📦 Tienes un Paquete Disponible para Entrega en RePAQ");
             
             message.setText("Estimado(a)\nTe informamos que tienes un paquete disponible para entrega en tu"
-                    + "sucursal de RePAQ.\n\nGracias por Preferirnos.\nRePAQ"); // aqui para enviar el mensaje el cuerpo
-            Transport t = s.getTransport("smtp"); // para conectar con el servidor
-            t.connect( "repaq01@gmail.com","vloqtdeilslusdip");// para poder obterne contrasena y correo 
-            t.sendMessage(message, message.getAllRecipients());// para conectar con el servidor de envio de google
-            t.close(); // para cerrar el metodo
+                    + "sucursal de RePAQ.\n\nGracias por Preferirnos.\nRePAQ");
+            
+            Transport t = s.getTransport("smtp");
+            t.connect(smtpUser, smtpPassword); // credenciales desde configuración externa
+            t.sendMessage(message, message.getAllRecipients());
+            t.close();
             JOptionPane.showMessageDialog(null,"Se ha enviado la notificación al correo.", "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
         }catch (MessagingException me) {
-            me.printStackTrace();   //Si se produce un error
+            me.printStackTrace();
             JOptionPane.showMessageDialog(null,"Error al enviar el correo.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
